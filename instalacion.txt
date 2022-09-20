@@ -1,0 +1,6 @@
+npm install -g npm@latest
+npm -v
+npm cache clean --force
+npm install -g create-react-app
+create-react-app 00-react
+
