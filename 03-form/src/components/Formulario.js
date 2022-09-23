@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
-import '../assets/styles.css';
+import '../assets/css/styles.css';
 
 const Formulario = () => {
 
@@ -8,7 +8,7 @@ const Formulario = () => {
 
     const onSubmit = data => {
         console.log('Datos: ', data);
-        // Enviar datos al servidor
+        // Preparar y enviar datos del formulario al servidor.
     };
 
     const validarEdad = edad => edad >= 18 && edad <= 65;
