@@ -7,9 +7,9 @@ let index = 0;
 
 const Button = () => {
 
+    const [loading, setLoading] = useState(true);
     const [currentPokemonName, setPokemonName] = useState(pokemonsList[0]);
     const [currentPokemon, setPokemon] = useState({});
-    const [loading, setLoading] = useState(true);
 
     useEffect (() => {
         let url = `https://pokeapi.co/api/v2/pokemon/${currentPokemonName}`;
