@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
+import Card from "./Card";
 import fetchAPI from "../modules/fechapi";
 import pokemonsList from "../modules/pokemonsList";
-import Card from "./Card";
-import React from "react";
-import '../assets/css/styles.css';
 
 let index = 0;
 
@@ -25,7 +23,7 @@ const Button = () => {
     return (
         <div>
             <Card name={currentPokemonName} data={currentPokemon} />
-            <button id="btn" onClick = {buttonClick}> + </button>
+            <button id="btn" onClick = {buttonClick}> » </button>
         </div>
     )
 }
