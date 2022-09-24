@@ -1,12 +1,13 @@
 /*
 Incluir lo siguiente en el App.js:
-<dialog id="zona">
-    <div className="spinner" aria-label="Consultando..."></div>
-</dialog>
+
+    <dialog id="zona">
+        <div className="spinner" aria-label="Consultando..."></div>
+    </dialog>
 
 Importar 'spin.css' en el App.js. 
 
-Tras importar el módulo allí donde se desee usar, emplear con:
+Tras importar este módulo allí donde se desee usar, emplear con:
 ponSpin(true);  // activar un spin
 ponSpin(false); // desactivar un spin
  */
