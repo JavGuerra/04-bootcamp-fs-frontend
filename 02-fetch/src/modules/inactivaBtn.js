@@ -4,8 +4,10 @@
  * @param {Boolean} estatus 
  */
 function inactivaBtn(boton, estatus) {
-    boton.disabled = estatus;
-    boton.setAttribute('aria-disabled', estatus);
+    if (boton) {
+        boton.disabled = estatus;
+        boton.setAttribute('aria-disabled', estatus);
+    }
 }
 
 export default inactivaBtn;
