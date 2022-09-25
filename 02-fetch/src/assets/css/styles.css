@@ -12,6 +12,12 @@
     font-size: xx-large;
 }
 
+#btn:disabled {
+    cursor: not-allowed;
+    background-color: WhiteSmoke !important;
+    color: Silver !important;
+}
+
 #card {
     color: darkgreen;
     text-align: center;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 import pokemonsList from "../modules/pokemonsList";
-import setSpin from '../modules/spin';
+import fetchAPI from "../modules/fechapi";
 
 let index = 0;
 
@@ -13,18 +13,10 @@ const Button = () => {
 
     useEffect (() => {
         let url = `https://pokeapi.co/api/v2/pokemon/${currentPokemonName}`;
-        const newPokemon = async () => {
-            setSpin(true);
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
+        fetchAPI(url, data => {
                 setPokemon(data);
                 setLoading(false);
-            }
-            catch (err) { console.log(err) }
-            finally { setSpin(false) };
-        }
-        newPokemon();
+            });
     }, [currentPokemonName]);
 
     const buttonClick = () => { 
