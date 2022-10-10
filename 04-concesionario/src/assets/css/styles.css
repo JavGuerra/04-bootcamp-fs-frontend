@@ -6,7 +6,7 @@ body {
 }
 
 label,
-.etiqueta {
+.label {
     display: inline-block;
 }
 
@@ -47,27 +47,27 @@ button:enabled {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px !important;
 }
 
-#borrar {
+#reset {
     background-color: #ffeaff;
     color: Orchid;
     width: 100px;
 }
 
-#borrar:enabled:hover {
+#reset:enabled:hover {
     background-color: #ffdaff;
 }
 
-#enviar {
+#send {
     background-color: #e6fae6;
     color: SeaGreen;
     width: 150px;
 }
 
-#enviar:enabled:hover {
+#send:enabled:hover {
     background-color: #c6fac6;
 }
 
-.obligatorio {
+.required {
     color: #ff2450;
 }
 

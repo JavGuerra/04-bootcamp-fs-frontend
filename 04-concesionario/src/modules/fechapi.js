@@ -8,7 +8,7 @@ import inactivaBtn from "./inactivaBtn";
  * @param {String} tipo
  */
 function fetchAPI(ruta, callback, tipo = 'json') {
-    inactivaBtn(document.getElementById('btn'), true);
+    inactivaBtn(document.getElementById('send'), true);
     setSpin(true);
     fetch(ruta)
         .then(response => {
@@ -19,7 +19,7 @@ function fetchAPI(ruta, callback, tipo = 'json') {
         .catch(err => console.log(err))
         .finally(() => {
             setSpin(false);
-            inactivaBtn(document.getElementById('btn'), false);
+            inactivaBtn(document.getElementById('send'), false);
         });
 };
 
