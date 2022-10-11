@@ -24,8 +24,8 @@ const Form = ({ setFilter, setStatus, url }) => {
     }
 
     const getManufacturers = async () => {
-        axios.get(url + 'manufacters/').then(response => {
-            setManufacturers(response.data.result)
+        axios.get(url + 'manufacturers/').then(response => {
+            setManufacturers(response.data.result);
         });
     }
 

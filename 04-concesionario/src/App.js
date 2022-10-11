@@ -20,7 +20,7 @@ function App() {
 
   if (!isNaN(dataStatus) && dataStatus >= 0 && dataStatus <= 2) {
     status = <Status dataStatus={dataStatus} />;
-    if (filterData) result = <Table filterData={filterData} />;
+    if (dataStatus === 0) result = <Table filterData={filterData} />;
   };
 
   return (
