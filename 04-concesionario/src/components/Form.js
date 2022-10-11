@@ -1,41 +1,49 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import fetchAPI from "../modules/fechapi";
+import inactiveBtn from '../modules/inactiveBtn';
+import setSpin from '../modules/spin';
 
-const Form = ({ setFilter, setStatus }) => {
+const Form = ({ setFilter, setStatus, url }) => {
 
-    const { register, handleSubmit, formState: { errors }, clearErrors } = useForm();
+    const [manufacturers, setManufacturers] = useState([]);
+    const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
+    const send = document.getElementById('send');
     const chrs = /^[\da-zA-ZÀ-ÿ\u00f1\u00d1\s-]*\S$/;
-    const url = 'http://localhost:3000/products/';
 
-    useEffect(() => {
-        fetchAPI(url, data => {
-            setStatus(data.response_code);
-            setFilter(data.result);
-        });
-    }, []);
-
-    onreset = () => clearErrors();
-
-    // TODO Preparar y enviar datos del formulario al servidor.
-    // TODO Actualizar status y datos
-    // TODO sin espacios al inicio y final
-    // TODO si campos vacíos, desactivar botones
-
-    const onSubmit = data => {
-        console.log('Datos: ', data);
+    const searchAndUpdate = (url) => {
+        inactiveBtn(send, true);
+        setSpin(true);
         axios.get(url).then(response => {
             setStatus(response.data.response_code);
             setFilter(response.data.result);
         });
+        setSpin(false);
+        inactiveBtn(send, false);
+    }
 
-        // fetchAPI(url, data => {
-        //    setStatus(data.response_code);
-        //    setFilter(data.result);
-        // });
+    const getManufacturers = async () => {
+        axios.get(url + 'manufacters/').then(response => {
+            setManufacturers(response.data.result)
+        });
+    }
 
+    useEffect(() => {
+        getManufacturers();
+        searchAndUpdate(url + 'products/');
+    }, []);
+
+    onreset = () => {
+        clearErrors();
+        reset();
+        searchAndUpdate(url + 'products/');
+    };
+
+    const onSubmit = data => {
+        data.brand = (data.brand === 'DEFAULT') ? '' : data.brand;
+        const params = `?modelo=${data.model}&color=${data.color}&precio=${data.price}&marca=${data.brand}`;
+        searchAndUpdate(url + 'search/' + params);
     };
 
     return (
@@ -61,8 +69,11 @@ const Form = ({ setFilter, setStatus }) => {
                     })} />
 
                 <label htmlFor="brand" className="sr">Marca:</label>
-                <select className="select" id="brand" {...register('brand')}>
-                    <option value="" selected="selected">--Marca--</option>
+                <select className="select" id="brand"
+                    {...register('brand')} defaultValue="DEFAULT">
+                    <option value="DEFAULT" disabled>--Marca--</option>
+                    {manufacturers.map((manufacturer, index) =>
+                        <option key={index} value={manufacturer.cif}>{manufacturer.name}</option>)}
                 </select>
 
                 {errors.model?.type === 'pattern' && <p>Modelo incorrecto.</p>}

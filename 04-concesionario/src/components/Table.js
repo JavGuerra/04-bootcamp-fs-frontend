@@ -12,7 +12,7 @@ const Table = ({ filterData }) => {
 
     if (filterData) {
 
-        // const url = 'http://localhost:3000/manufacters/';
+        // const url = 'http://localhost:3000/manufacturers/';
 
         for (const resultado of filterData) {
 

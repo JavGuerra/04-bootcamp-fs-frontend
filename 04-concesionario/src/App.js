@@ -13,6 +13,7 @@ function App() {
 
   const title = 'Concesionario React';
   const footer = 'Por: Javier Guerra';
+  const url = 'http://localhost:3000/';
 
   const [dataStatus, setStatus] = useState(null); 
   const [filterData, setFilter] = useState(null);
@@ -30,7 +31,7 @@ function App() {
       <Header title={title} />
       <main>
         <section>
-          <Form setFilter={setFilter} setStatus={setStatus} />
+          <Form setFilter={setFilter} setStatus={setStatus} url={url} />
         </section>
         <section id="status">{status}</section>
         <section id="result">{result}</section>
