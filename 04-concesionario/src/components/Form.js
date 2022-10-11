@@ -9,18 +9,18 @@ const Form = ({ setFilter, setStatus, url }) => {
 
     const [manufacturers, setManufacturers] = useState([]);
     const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
-    const send = document.getElementById('send');
+    const sendBtn = document.getElementById('send');
     const chrs = /^[\da-zA-ZÀ-ÿ\u00f1\u00d1\s-]*\S$/;
 
     const searchAndUpdate = (url) => {
-        inactiveBtn(send, true);
+        inactiveBtn(sendBtn, true);
         setSpin(true);
         axios.get(url).then(response => {
             setStatus(response.data.response_code);
             setFilter(response.data.result);
         });
         setSpin(false);
-        inactiveBtn(send, false);
+        inactiveBtn(sendBtn, false);
     }
 
     const getManufacturers = async () => {
@@ -36,7 +36,7 @@ const Form = ({ setFilter, setStatus, url }) => {
 
     onreset = () => {
         clearErrors();
-        reset();
+        reset({ model: '', color: '', price: '', brand: '' });
         searchAndUpdate(url + 'products/');
     };
 
