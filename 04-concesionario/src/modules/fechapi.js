@@ -1,5 +1,5 @@
 import setSpin from './spin';
-import inactivaBtn from "./inactivaBtn";
+import inactiveBtn from "./inactiveBtn";
 
 /**
  * Hace una consulta a la API indicada en la ruta y ejecuta el callback.
@@ -8,7 +8,7 @@ import inactivaBtn from "./inactivaBtn";
  * @param {String} tipo
  */
 function fetchAPI(ruta, callback, tipo = 'json') {
-    inactivaBtn(document.getElementById('send'), true);
+    inactiveBtn(document.getElementById('send'), true);
     setSpin(true);
     fetch(ruta)
         .then(response => {
@@ -19,7 +19,7 @@ function fetchAPI(ruta, callback, tipo = 'json') {
         .catch(err => console.log(err))
         .finally(() => {
             setSpin(false);
-            inactivaBtn(document.getElementById('send'), false);
+            inactiveBtn(document.getElementById('send'), false);
         });
 };
 

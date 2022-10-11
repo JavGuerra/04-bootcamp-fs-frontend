@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {title, footer, url} from './modules/config';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import Header from './components/Header';
@@ -10,10 +11,6 @@ import './assets/css/styles.css';
 import './assets/css/wysiwyg-min.css';
 
 function App() {
-
-  const title = 'Concesionario React';
-  const footer = 'Por: Javier Guerra';
-  const url = 'http://localhost:3000/';
 
   const [dataStatus, setStatus] = useState(null); 
   const [filterData, setFilter] = useState(null);
