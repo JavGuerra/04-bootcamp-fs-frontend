@@ -9,7 +9,7 @@ const Form = ({ setData, setStatus, url }) => {
     const [manufacturers, setManufacturers] = useState([]);
     const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
     const sendBtn = document.getElementById('send');
-    const chrs = /^[\da-zA-ZÀ-ÿ\u00f1\u00d1\s-]*\S$/;
+    const chars = /^[\da-zA-ZÀ-ÿ\u00f1\u00d1\s-]*\S$/;
 
     const searchAndUpdate = (url) => {
         inactiveBtn(sendBtn, true);
@@ -22,15 +22,11 @@ const Form = ({ setData, setStatus, url }) => {
         inactiveBtn(sendBtn, false);
     }
 
-    const getManufacturers = async () => {
-        axios.get(url + 'manufacturers/').then(response => {
-            setManufacturers(response.data.result);
-        });
-    }
-
     useEffect(() => {
-        getManufacturers();
+        axios.get(url + 'manufacturers/').then(response =>
+            setManufacturers(response.data.result));
         searchAndUpdate(url + 'products/');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     onreset = () => {
@@ -52,13 +48,13 @@ const Form = ({ setData, setStatus, url }) => {
                 <label htmlFor="model" className="sr">Modelo:</label>
                 <input type="text" id="model" placeholder="modelo" autoFocus="autofocus"
                     {...register('model', {
-                        pattern: chrs
+                        pattern: chars
                     })} />
 
                 <label htmlFor="color" className="sr">Color:</label>
                 <input type="text" id="color" placeholder="color"
                     {...register('color', {
-                        pattern: chrs
+                        pattern: chars
                     })} />
 
                 <label htmlFor="price" className="sr">Precio:</label>
@@ -81,7 +77,7 @@ const Form = ({ setData, setStatus, url }) => {
 
             </div>
             <button id="reset" type="reset">Borrar</button>
-            <button id="send" type="send">Enviar</button>
+            <button id="send"  type="send" >Enviar</button>
         </form>
     )
 }
