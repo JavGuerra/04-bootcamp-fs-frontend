@@ -1,12 +1,12 @@
 /**
  * Activa o desactiva un botón según el estado indicado.
- * @param {Element} boton 
- * @param {Boolean} estatus 
+ * @param {Element} button 
+ * @param {Boolean} status 
  */
-function inactiveBtn(boton, estatus) {
-    if (boton) {
-        boton.disabled = estatus;
-        boton.setAttribute('aria-disabled', estatus);
+function inactiveBtn(button, status) {
+    if (button) {
+        button.disabled = status;
+        button.setAttribute('aria-disabled', status);
     }
 }
 

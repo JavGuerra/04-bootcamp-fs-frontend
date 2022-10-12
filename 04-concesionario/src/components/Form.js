@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import inactiveBtn from '../modules/inactiveBtn';
-import setSpin from '../modules/spin';
+import setSpin from '../modules/setSpin';
 
 const Form = ({ setData, setStatus, url }) => {
 
