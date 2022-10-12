@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {title, footer, url} from './modules/config';
+import { title, footer, url } from './modules/config';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import Header from './components/Header';
@@ -13,14 +13,14 @@ import './assets/css/wysiwyg-min.css';
 function App() {
 
   const [dataStatus, setStatus] = useState(null); 
-  const [filterData, setFilter] = useState(null);
+  const [filteredData, setData] = useState(null);
 
   let status = null;
   let result = null;
 
   if (!isNaN(dataStatus) && dataStatus >= 0 && dataStatus <= 2) {
     status = <Status dataStatus={dataStatus} />;
-    if (dataStatus === 0) result = <Table filterData={filterData} />;
+    if (dataStatus === 0) result = <Table filteredData={filteredData} />;
   };
 
   return (
@@ -28,7 +28,7 @@ function App() {
       <Header title={title} />
       <main>
         <section>
-          <Form setFilter={setFilter} setStatus={setStatus} url={url} />
+          <Form setData={setData} setStatus={setStatus} url={url} />
         </section>
         <section id="status">{status}</section>
         <section id="result">{result}</section>

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Zone = () => {
     return (
         <dialog id="zone">

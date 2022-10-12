@@ -1,14 +1,12 @@
-import React from "react";
-
-const Table = ({ filterData }) => {
+const Table = ({ filteredData }) => {
 
     let code = '';
 
-    if (filterData) {
-        for (const resultado of filterData) {
+    if (filteredData) {
+        for (const result of filteredData) {
             code += '<tr>';
-            for (const valor of Object.values(resultado))
-                code += `<td>${valor}</td>`;
+            for (const value of Object.values(result))
+                code += `<td>${value}</td>`;
             code += '</tr>';
         }
     }

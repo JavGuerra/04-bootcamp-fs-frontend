@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import React from "react";
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import inactiveBtn from '../modules/inactiveBtn';
 import setSpin from '../modules/spin';
 
-const Form = ({ setFilter, setStatus, url }) => {
+const Form = ({ setData, setStatus, url }) => {
 
     const [manufacturers, setManufacturers] = useState([]);
     const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
@@ -17,7 +16,7 @@ const Form = ({ setFilter, setStatus, url }) => {
         setSpin(true);
         axios.get(url).then(response => {
             setStatus(response.data.response_code);
-            setFilter(response.data.result);
+            setData(response.data.result);
         });
         setSpin(false);
         inactiveBtn(sendBtn, false);
