@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { title, footer, url } from './modules/config';
+import { useState, useContext } from "react";
+import Config from './contexts/ConfigContext';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import Header from './components/Header';
@@ -12,6 +12,7 @@ import './assets/css/wysiwyg-min.css';
 
 function App() {
 
+  const { title, footer, url } = useContext(Config);
   const [dataStatus, setStatus] = useState(null); 
   const [filteredData, setData] = useState(null);
 
