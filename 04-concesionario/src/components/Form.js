@@ -23,8 +23,8 @@ const Form = ({ setData, setStatus, url }) => {
             .catch(error => {
                 setStatus(-1);
                 if (error.response) {
-                    // La respuesta fue hecha y el servidor respondió con un código 
-                    // de estado que esta fuera del rango de 2xx
+                    // La respuesta fue hecha y el servidor respondió con un 
+                    // código de estado que esta fuera del rango de 2xx
                     console.log(error.response.data);
                     console.log(error.response.status);
                     console.log(error.response.headers);
@@ -68,10 +68,10 @@ const Form = ({ setData, setStatus, url }) => {
             <div className="bg">
 
                 <label htmlFor="model" className="sr">Modelo:</label>
-                <input type="text" id="model" placeholder="modelo" autoFocus="autofocus"
+                <input type="text" id="model" placeholder="modelo"
                     {...register('model', {
                         pattern: chars
-                    })} />
+                    })} autoFocus="autofocus" />
 
                 <label htmlFor="color" className="sr">Color:</label>
                 <input type="text" id="color" placeholder="color"
@@ -90,7 +90,9 @@ const Form = ({ setData, setStatus, url }) => {
                     {...register('brand')}>
                     <option value="" disabled>--Marca--</option>
                     {manufacturers.map((manufacturer, index) =>
-                        <option key={index} value={manufacturer.cif}>{manufacturer.name}</option>)}
+                        <option key={index} value={manufacturer.cif}>
+                            {manufacturer.name}
+                        </option>)}
                 </select>
 
                 {errors.model?.type === 'pattern' && <p>Modelo incorrecto.</p>}
