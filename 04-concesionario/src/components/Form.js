@@ -94,6 +94,7 @@ const Form = ({ setData, setStatus, url }) => {
                             {manufacturer.name}
                         </option>)}
                 </select>
+                
                 <p className="required">
                     {errors.model?.type === 'pattern' &&
                         <span>&nbsp;(&nbsp;!&nbsp;)&nbsp;Modelo&nbsp;incorrecto.&nbsp;</span>}
