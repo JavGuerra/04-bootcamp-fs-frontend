@@ -15,12 +15,8 @@ function App() {
   const [dataStatus, setStatus] = useState(null); 
   const [filteredData, setData] = useState(null);
 
-  const result = (!isNaN(dataStatus) && dataStatus === Math.round(0)) ?
-    <Table filteredData={filteredData} /> : null;
-
   return (
     <div className="wysiwyg">
-
       <Header title={title} />
 
       <main>
@@ -33,14 +29,12 @@ function App() {
         </section>
 
         <section id="result">
-          {result}
+          {dataStatus === Math.round(0) && <Table filteredData={filteredData} />}
         </section>
       </main>
 
       <Footer footer={footer} />
-
       <Zone />
-
     </div>
   );
 }
