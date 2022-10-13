@@ -58,7 +58,6 @@ const Form = ({ setData, setStatus, url }) => {
     };
 
     const onSubmit = data => {
-        data.brand = (data.brand === 'DEFAULT') ? '' : data.brand;
         const params = `?modelo=${clear(data.model)}&color=${clear(data.color)}`
             + `&precio=${clear(data.price)}&marca=${clear(data.brand)}`;
         searchAndUpdate(url + 'search/' + params);
@@ -87,9 +86,9 @@ const Form = ({ setData, setStatus, url }) => {
                     })} />
 
                 <label htmlFor="brand" className="sr">Marca:</label>
-                <select className="select" id="brand" defaultValue="DEFAULT"
+                <select className="select" id="brand" defaultValue=""
                     {...register('brand')}>
-                    <option value="DEFAULT" disabled>--Marca--</option>
+                    <option value="" disabled>--Marca--</option>
                     {manufacturers.map((manufacturer, index) =>
                         <option key={index} value={manufacturer.cif}>{manufacturer.name}</option>)}
                 </select>
