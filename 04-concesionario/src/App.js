@@ -29,7 +29,7 @@ function App() {
         </section>
 
         <section id="result">
-          {dataStatus === Math.round(0) && <Table filteredData={filteredData} />}
+          {dataStatus === 0 && <Table filteredData={filteredData} />}
         </section>
       </main>
 
