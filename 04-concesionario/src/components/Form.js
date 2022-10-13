@@ -94,14 +94,18 @@ const Form = ({ setData, setStatus, url }) => {
                             {manufacturer.name}
                         </option>)}
                 </select>
-
-                {errors.model?.type === 'pattern' && <p>Modelo incorrecto.</p>}
-                {errors.color?.type === 'pattern' && <p>Color incorrecto.</p>}
-                {errors.price && <p>Precio incorrecto.</p>}
+                <p className="required">
+                    {errors.model?.type === 'pattern' &&
+                        <span>&nbsp;(&nbsp;!&nbsp;)&nbsp;Modelo&nbsp;incorrecto.&nbsp;</span>}
+                    {errors.color?.type === 'pattern' &&
+                        <span>&nbsp;(&nbsp;!&nbsp;)&nbsp;Color&nbsp;incorrecto.&nbsp;</span>}
+                    {errors.price &&
+                        <span>&nbsp;(&nbsp;!&nbsp;)&nbsp;Precio&nbsp;incorrecto.&nbsp;</span>}
+                </p>
 
             </div>
             <button id="reset" type="reset">Borrar</button>
-            <button id="send" type="send" >Enviar</button>
+            <button id="send"  type="send" >Enviar</button>
         </form>
     )
 }
