@@ -15,26 +15,32 @@ function App() {
   const [dataStatus, setStatus] = useState(null); 
   const [filteredData, setData] = useState(null);
 
-  let status = null;
-  let result = null;
-
-  if (!isNaN(dataStatus) && dataStatus >= 0 && dataStatus <= 2) {
-    status = <Status dataStatus={dataStatus} />;
-    if (dataStatus === 0) result = <Table filteredData={filteredData} />;
-  };
+  const result = (!isNaN(dataStatus) && dataStatus === Math.round(0)) ?
+    <Table filteredData={filteredData} /> : null;
 
   return (
     <div className="wysiwyg">
+
       <Header title={title} />
+
       <main>
         <section>
           <Form setData={setData} setStatus={setStatus} url={url} />
         </section>
-        <section id="status">{status}</section>
-        <section id="result">{result}</section>
+
+        <section id="status">
+          <Status dataStatus={dataStatus} />
+        </section>
+
+        <section id="result">
+          {result}
+        </section>
       </main>
+
       <Footer footer={footer} />
+
       <Zone />
+
     </div>
   );
 }

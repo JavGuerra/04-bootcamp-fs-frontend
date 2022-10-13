@@ -1,11 +1,15 @@
 const Status = ({dataStatus}) => {
 
-    const status = 'Estatus: ' +
-    ((!dataStatus) ? 'OK.'
-    : (dataStatus === 1) ? 'Sin coincidencias.' : 'Sin parámetros.');
+    dataStatus = Math.round(dataStatus);
+
+    const status = (
+        (dataStatus === 0) ? 'OK' :
+        (dataStatus === 1) ? 'Sin coincidencias' :
+        (dataStatus === 2) ? 'Sin parámetros' :
+        'Error' );
 
     return (
-        <p>{status}</p>
+        <p>Estatus: {status}</p>
     )
 }
 
