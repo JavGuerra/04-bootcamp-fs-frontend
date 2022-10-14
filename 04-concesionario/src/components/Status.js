@@ -7,9 +7,7 @@ const Status = ({dataStatus}) => {
         'Error'
     );
 
-    return (
-        <p>Estatus: {status}</p>
-    )
+    return <p>Estatus: {status}</p>;
 }
 
 export default Status;
