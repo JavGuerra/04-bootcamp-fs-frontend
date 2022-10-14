@@ -49,7 +49,7 @@ const Form = ({ url, setStatus, setData }) => {
 
     useEffect(() => {
         axios.get(url + 'manufacturers/')
-            .then(response => setManufacturers(response.data.result))
+            .then(response => setManufacturers(response.data.result)) // Fabricantes
             .catch(error => console.log('Error: ', error.message));
         searchAndUpdate(url + 'products/');
         // eslint-disable-next-line react-hooks/exhaustive-deps
