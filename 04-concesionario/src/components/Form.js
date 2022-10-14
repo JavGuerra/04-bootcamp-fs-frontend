@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import inactiveBtn from '../modules/inactiveBtn';
 import setSpin from '../modules/setSpin';
+import axios   from 'axios';
 
-const Form = ({ setData, setStatus, url }) => {
+const Form = ({ url, setStatus, setData }) => {
 
     const [manufacturers, setManufacturers] = useState([]);
     const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
@@ -12,16 +12,20 @@ const Form = ({ setData, setStatus, url }) => {
     const chars = /^[\da-zA-ZÀ-ÿ\u00f1\u00d1\s-]*\S$/;
     const sendBtn = document.getElementById('send');
 
+    /**
+     * Hace una consulta a la url de la API y obtiene dataStatus y filteredData
+     * @param {string} url 
+     */
     const searchAndUpdate = url => {
         inactiveBtn(sendBtn, true);
         setSpin(true);
         axios.get(url)
             .then(response => {
-                setStatus(response.data.response_code);
-                setData(response.data.result);
+                setStatus(response.data.response_code); //dataStatus
+                setData(response.data.result);          //filteredData
             })
             .catch(error => {
-                setStatus(-1);
+                setStatus(-1); // Devuelve error (-1) a dataStatus
                 if (error.response) {
                     // La respuesta fue hecha y el servidor respondió con un 
                     // código de estado que esta fuera del rango de 2xx
@@ -51,12 +55,14 @@ const Form = ({ setData, setStatus, url }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // Botón reset
     onreset = () => {
         clearErrors();
         reset({ model: '', color: '', price: '', brand: '' });
         searchAndUpdate(url + 'products/');
     };
 
+    // Botón send
     const onSubmit = data => {
         const params = `?modelo=${clear(data.model)}&color=${clear(data.color)}`
             + `&precio=${clear(data.price)}&marca=${clear(data.brand)}`;
@@ -65,6 +71,7 @@ const Form = ({ setData, setStatus, url }) => {
 
     return (
         <form name="form" onSubmit={handleSubmit(onSubmit)}>
+
             <div className="bg">
 
                 <label htmlFor="model" className="sr">Modelo:</label>
@@ -89,6 +96,7 @@ const Form = ({ setData, setStatus, url }) => {
                 <select className="select" id="brand" defaultValue=""
                     {...register('brand')}>
                     <option value="" disabled>--Marca--</option>
+                    {/* Listado de fabricantes */}
                     {manufacturers.map((manufacturer, index) =>
                         <option key={index} value={manufacturer.cif}>
                             {manufacturer.name}
@@ -105,8 +113,10 @@ const Form = ({ setData, setStatus, url }) => {
                 </p>
 
             </div>
+
             <button id="reset" type="reset">Borrar</button>
             <button id="send"  type="send" >Enviar</button>
+
         </form>
     )
 }
