@@ -118,7 +118,7 @@ const Form = ({ url, setStatus, setData }) => {
             <button id="send"  type="send" >Enviar</button>
 
         </form>
-    )
+    );
 }
 
 export default Form;
