@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from 'react-hook-form';
 import inactiveBtn from '../modules/inactiveBtn';
 import setSpin from '../modules/setSpin';
@@ -10,14 +10,14 @@ const Form = ({ url, setStatus, setData }) => {
     const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
     const clear = value => (value === undefined) ? '' : value.trim();
     const chars = /^[\da-zA-ZÀ-ÿ\u00f1\u00d1\s-]*\S$/;
-    const sendBtn = document.getElementById('send');
+    const sendBtnRef = useRef(); // document.getElementById('send');
 
     /**
      * Hace una consulta a la url de la API y obtiene dataStatus y filteredData
      * @param {string} url 
      */
     const searchAndUpdate = url => {
-        inactiveBtn(sendBtn, true);
+        inactiveBtn(sendBtnRef.current, true);
         setSpin(true);
         axios.get(url)
             .then(response => {
@@ -44,7 +44,7 @@ const Form = ({ url, setStatus, setData }) => {
                 console.log(error.config);
             });
         setSpin(false);
-        inactiveBtn(sendBtn, false);
+        inactiveBtn(sendBtnRef.current, false);
     }
 
     useEffect(() => {
@@ -115,7 +115,7 @@ const Form = ({ url, setStatus, setData }) => {
             </div>
 
             <button id="reset" type="reset">Borrar</button>
-            <button id="send"  type="send" >Enviar</button>
+            <button ref={sendBtnRef} id="send" type="send">Enviar</button>
 
         </form>
     );
