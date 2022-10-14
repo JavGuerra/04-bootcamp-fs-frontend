@@ -9,7 +9,7 @@ const Table = ({ filteredData }) => {
                 code += `<td>${value}</td>`;
             code += '</tr>';
         }
-    }
+    };
 
     return (
         <table>
@@ -24,7 +24,7 @@ const Table = ({ filteredData }) => {
             </thead>
             <tbody dangerouslySetInnerHTML={{ __html: code }} />
         </table>
-    )
+    );
 }
 
 export default Table;

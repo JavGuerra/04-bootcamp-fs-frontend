@@ -3,7 +3,7 @@ const Footer = ({footer}) => {
         <footer>
             <p><small>{footer}</small></p>
         </footer>
-    )
+    );
 };
 
 export default Footer;
