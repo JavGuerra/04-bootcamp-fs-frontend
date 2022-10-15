@@ -3,19 +3,19 @@ const Table = ({ filteredData }) => {
     let code = '';
 
     if (filteredData) {
-        for (const result of filteredData) {
+        filteredData.forEach((result, index) => {
             code += '<tr>';
-            for (const value of Object.values(result))
-                code += `<td>${value}</td>`;
+            for (let [key, value] of Object.entries(result))
+                code += '<td>' + (key === '_id' ? index + 1 : value) + '</td>';
             code += '</tr>';
-        }
-    };
+        });
+    }
 
     return (
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Nº</th>
                     <th>Modelo</th>
                     <th>Fabricante</th>
                     <th>Precio</th>
