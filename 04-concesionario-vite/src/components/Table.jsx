@@ -5,8 +5,8 @@ const Table = ({ filteredData }) => {
     if (filteredData) {
         filteredData.forEach((result, index) => {
             code += '<tr>';
-            for (let [key, value] of Object.entries(result))
-                code += '<td>' + (key === '_id' ? index + 1 : value) + '</td>';
+            for (const [key, value] of Object.entries(result))
+                code += `<td>${key === '_id' ? index + 1 : value}</td>`;
             code += '</tr>';
         });
     }
