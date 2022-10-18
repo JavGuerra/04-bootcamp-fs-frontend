@@ -1,4 +1,9 @@
-const Header = ({title}) => {
+import useConfig from '../hooks/useConfig';
+
+const Header = () => {
+
+    const { title } = useConfig();
+
     return (
         <header>
             <h1 className="colors">{title}</h1>

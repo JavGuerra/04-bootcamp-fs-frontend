@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useForm } from 'react-hook-form';
+import useConfig from '../hooks/useConfig';
 import inactiveBtn from '../modules/inactiveBtn';
 import setSpin from '../modules/setSpin';
 import axios   from 'axios';
 
-const Form = ({ url, setStatus, setData }) => {
+const Form = ({ setStatus, setData }) => {
 
     const [manufacturers, setManufacturers] = useState([]);
+    const { url } = useConfig();
     const { register, handleSubmit, formState: { errors }, clearErrors, reset } = useForm();
     const clear = value => (value === undefined) ? '' : value.trim();
     const chars = /^[\da-zA-ZÀ-ÿ\u00f1\u00d1\s-]*\S$/;

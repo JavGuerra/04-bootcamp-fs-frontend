@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import Config from './contexts/ConfigContext';
+import { useState } from "react";
 import Footer from './components/Footer';
 import Form   from './components/Form';
 import Header from './components/Header';
@@ -12,13 +11,12 @@ import './assets/css/wysiwyg-min.css';
 
 function App() {
 
-  const { title, footer, url  } = useContext(Config);
   const [dataStatus, setStatus] = useState(null); 
   const [filteredData, setData] = useState(null);
 
   return (
     <div className="wysiwyg">
-      <Header title={title} />
+      <Header />
 
       <main>
         <section>
@@ -26,8 +24,8 @@ function App() {
             Form, podemos actualizar las variables 'dataStatus' y 'filteredData'
             desde el hijo (Form), pero los efectos de esa actualización se verán
             en el padre (App), que detecta los cambios en ambas variables y esto
-            provoca que se renderize de nuevo App con sus valores actuales.  */}
-          <Form url={url} setStatus={setStatus} setData={setData} />
+            provoca que se renderize de nuevo App, con sus valores actuales. */}
+          <Form setStatus={setStatus} setData={setData} />
         </section>
 
         <section id="status">
@@ -39,7 +37,7 @@ function App() {
         </section>
       </main>
 
-      <Footer footer={footer} />
+      <Footer />
       <Zone />
     </div>
   );
