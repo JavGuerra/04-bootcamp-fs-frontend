@@ -4,9 +4,18 @@ const Table = ({ filteredData }) => {
 
     if (filteredData) {
         filteredData.forEach((result, index) => {
+            const manufacturer = result.manufacturer.ref.name;
+            const address = result.manufacturer.ref.address;
+            const cif = result.manufacturer.cif;
+            const dfn = `${manufacturer} • CIF: ${cif} • ${address}`;
+
             code += '<tr>';
-            for (const [key, value] of Object.entries(result))
-                code += `<td>${ key === '_id' ? index + 1 : value }</td>`;
+            code +=     `<td>${index + 1}</td>`;
+            code +=     `<td>${result.name}</td>`;
+            code +=     `<td><dfn class="dfn" data-title="${dfn}">`;
+            code +=         `${manufacturer}</dfn></td>`;
+            code +=     `<td>${result.price}</td>`;
+            code +=     `<td>${result.color}</td>`;
             code += '</tr>';
         });
     }

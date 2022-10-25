@@ -97,7 +97,7 @@ const Form = ({ setStatus, setData }) => {
                 <label htmlFor="brand" className="sr">Marca:</label>
                 <select className="select" id="brand" defaultValue=""
                     {...register('brand')}>
-                    <option value="" disabled>--Marca--</option>
+                    <option value="" disabled>--Fabricante--</option>
                     {/* Listado de fabricantes */}
                     {manufacturers.map((manufacturer, index) =>
                         <option key={index} value={manufacturer.cif}>

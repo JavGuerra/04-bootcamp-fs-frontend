@@ -17,3 +17,9 @@ También deberemos mostrar animaciones (spinners) o mensajes auxiliares mientras
 ​Recordamos que el formulario debe añadir un desplegable con las marcas de los concesionarios.
 
 Al entrar a la página debemos volcar todos los productos en la tabla, y se irá actualizando a medida que filtremos con el formulario.
+
+Extra:
+
+Añadir funcionalidad de ordenacion de mayor a menor e inversa y añadir botones de paginacion para recorrer los resultados.
+
+Nota: Usar con 11-backend-populate
