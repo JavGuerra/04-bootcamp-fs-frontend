@@ -5,9 +5,6 @@ import Header from './components/Header';
 import Status from "./components/Status";
 import Table  from './components/Table';
 import Zone   from './components/Zone';
-import './assets/css/spin.css';
-import './assets/css/styles.css';
-import './assets/css/wysiwyg-min.css';
 
 function App() {
 
