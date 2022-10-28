@@ -100,7 +100,7 @@ const Form = ({ setStatus, setData }) => {
                     <option value="" disabled>--Fabricante--</option>
                     {/* Listado de fabricantes */}
                     {manufacturers.map((manufacturer, index) =>
-                        <option key={index} value={manufacturer.cif}>
+                        <option key={index} value={manufacturer.name}>
                             {manufacturer.name}
                         </option>)}
                 </select>

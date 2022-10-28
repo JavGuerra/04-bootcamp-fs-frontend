@@ -4,9 +4,9 @@ const Table = ({ filteredData }) => {
 
     if (filteredData) {
         filteredData.forEach((result, index) => {
-            const manufacturer = result.manufacturer.ref.name;
+            const manufacturer = result.manufacturer.name;
             const address = result.manufacturer.ref.address;
-            const cif = result.manufacturer.cif;
+            const cif = result.manufacturer.ref.cif;
             const dfn = `${manufacturer} • CIF: ${cif} • ${address}`;
 
             code += '<tr>';

@@ -18,8 +18,4 @@ También deberemos mostrar animaciones (spinners) o mensajes auxiliares mientras
 
 Al entrar a la página debemos volcar todos los productos en la tabla, y se irá actualizando a medida que filtremos con el formulario.
 
-Extra:
-
-Añadir funcionalidad de ordenación de mayor a menor e inversa y añadir botones de paginación para recorrer los resultados.
-
 Nota: Usar con 11-backend-populate
